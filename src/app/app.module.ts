@@ -9,6 +9,7 @@ import { CastComponent } from './cast/cast/cast.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { InActiveCastComponent } from './in-active-cast/in-active-cast.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
     EmployeeComponent,
     CastComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    InActiveCastComponent
   ],
   imports: [
     BrowserModule,

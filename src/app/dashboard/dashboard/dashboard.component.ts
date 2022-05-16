@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardService } from '../dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  inActiveCasts = [];
 
-  constructor() { }
+  constructor(private dashBoardService: DashboardService) { }
 
   ngOnInit(): void {
+    this.dashBoardService.getAllInActiveCast().subscribe(res =>{
+      this.inActiveCasts = res;
+      console.log(this.inActiveCasts);
+    });
   }
 
 }

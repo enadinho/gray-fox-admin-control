@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CastComponent } from './cast/cast/cast.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { EmployeeComponent } from './employee/employee/employee.component';
+import { InActiveCastComponent } from './in-active-cast/in-active-cast.component';
 import { LoginComponent } from './login/login/login.component';
 
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
   {path:'dashboard', component: DashboardComponent, children:[
     {path:'employee', component: EmployeeComponent},
     {path:'cast', component: CastComponent},
+    {path:'inActiveCast', component: InActiveCastComponent}
   ]},
 ];
 
