@@ -7,15 +7,15 @@ import { InActiveCastService } from './inActiveCast.service';
   styleUrls: ['./in-active-cast.component.css']
 })
 export class InActiveCastComponent implements OnInit {
-  inActiveCasts = [];
+  inActiveCasts = [{name: 'enad'},{name: 'hilal'}];
 
   constructor(private inActiveCastService: InActiveCastService) { }
 
   ngOnInit(): void {
-    this.inActiveCastService.getAllInActiveCast().subscribe(res =>{
-      this.inActiveCasts = res;
-      console.log(this.inActiveCasts);
-    });
+    // this.inActiveCastService.getAllInActiveCast().subscribe(res =>{
+    //   this.inActiveCasts = res;
+    //   console.log(this.inActiveCasts);
+    // });
   }
 
 }
