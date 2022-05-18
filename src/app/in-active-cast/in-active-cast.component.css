@@ -46,10 +46,28 @@ body {
 .card-body img {
   align-self: center;
   border-radius: 130px;
-  width: 30%;
+  width: 70%;
   height: 80px;
   object-fit: cover;
 }
 .card-info p{
   font-size: 10px;
+  padding-top: 5px;
+}
+.activeProfile{
+  position: absolute;
+  right:20px;
+  top:10px;
+  width:10px;
+  height: 10px;
+  background: green;
+  border-radius: 50%;
+}
+.profileImg{
+  width:100%;
+  text-align:center;
+}
+.statusDiv{
+  position: relative;
+  display:inline-block;
 }
