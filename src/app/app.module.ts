@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { InActiveCastComponent } from './in-active-cast/in-active-cast.component';
+import { HomeComponent } from './home/home.component';
+import { CastCardComponent } from './app-common/cast-card/cast-card.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { InActiveCastComponent } from './in-active-cast/in-active-cast.component
     CastComponent,
     LoginComponent,
     DashboardComponent,
-    InActiveCastComponent
+    InActiveCastComponent,
+    HomeComponent,
+    CastCardComponent
   ],
   imports: [
     BrowserModule,
