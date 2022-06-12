@@ -7,11 +7,12 @@ import { NavigationBarComponent } from './navigationBar/navigation-bar/navigatio
 import { EmployeeComponent } from './employee/employee/employee.component';
 import { CastComponent } from './cast/cast/cast.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './login/login/login.component';
+import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { InActiveCastComponent } from './in-active-cast/in-active-cast.component';
 import { HomeComponent } from './home/home.component';
 import { CastCardComponent } from './app-common/cast-card/cast-card.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CastCardComponent } from './app-common/cast-card/cast-card.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
