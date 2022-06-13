@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './navigationBar/navigation-bar/navigation-bar.component';
@@ -13,6 +13,8 @@ import { InActiveCastComponent } from './in-active-cast/in-active-cast.component
 import { HomeComponent } from './home/home.component';
 import { CastCardComponent } from './app-common/cast-card/cast-card.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { NotificationService } from './app-common/notification.service';
 
 @NgModule({
   declarations: [
@@ -24,15 +26,21 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     InActiveCastComponent,
     HomeComponent,
-    CastCardComponent
+    CastCardComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true
+    })
   ],
-  providers: [],
+  providers: [NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

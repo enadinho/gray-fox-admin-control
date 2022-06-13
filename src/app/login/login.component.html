@@ -13,13 +13,13 @@
           <h4 class="card-title">Login</h4>
           <div >
       <form [formGroup]="f" novalidate>
-      <div class="form-group" [class.has-danger]="((f.get('name')?.hasError('required') || f.get('name')?.hasError('email')) && f.get('name')?.hasError('email') )&& f.get('name')?.touched">
+      <div class="form-group" [class.has-danger]="((f.get('email')?.hasError('required') || f.get('email')?.hasError('email')) && f.get('email')?.hasError('email') )&& f.get('email')?.touched">
         <label for="exampleInputEmail1">Email address</label>
-        <input  formControlName="name" type="email" class="form-control" id="exampleInputEmail1" 
-      [class.form-control-danger]="f.get('name')?.hasError('required') && f.get('name')?.touched"
+        <input  formControlName="email" type="email" class="form-control" id="exampleInputEmail1" 
+      [class.form-control-danger]="f.get('email')?.hasError('required') && f.get('email')?.touched"
       placeholder="Enter email">
-          <div *ngIf="f.get('name')?.hasError('required') && f.get('name')?.touched" class="form-control-feedback">Sorry, that username's taken. Try another?</div>
-            <div *ngIf="f.get('name')?.hasError('email') && f.get('name')?.touched && !f.get('name')?.hasError('required')" class="form-control-feedback">That's not an email address</div>
+          <div *ngIf="f.get('email')?.hasError('required') && f.get('email')?.touched" class="form-control-feedback">Sorry, that username's taken. Try another?</div>
+            <div *ngIf="f.get('email')?.hasError('email') && f.get('email')?.touched && !f.get('email')?.hasError('required')" class="form-control-feedback">That's not an email address</div>
       </div>
 
       <div class="form-group" [class.has-danger]="(f.get('password')?.hasError('required') || f.get('password')?.hasError('minlength')) && f.get('password')?.touched">
