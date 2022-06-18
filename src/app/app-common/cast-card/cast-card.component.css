@@ -23,7 +23,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  width: 300px;
+  width: 320px;
 }
 .card-body {
   display: flex;
@@ -31,7 +31,7 @@ body {
   justify-content: center;
   align-items: flex-start;
   padding: 20px;
-  min-height: 100px;
+  /* min-height: 100px; */
 }
 .card-body h2{
   font-size: 15px;
@@ -70,4 +70,14 @@ body {
 .statusDiv{
   position: relative;
   display:inline-block;
+}
+
+.icon {
+  display: inline-block;
+  font-size: small;
+  vertical-align: middle;
+ }
+ 
+ table {
+  border: none;
 }

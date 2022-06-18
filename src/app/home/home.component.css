@@ -3,3 +3,13 @@
     font-weight: bold;
     color: #D74022;
 }
+
+.container{
+  height:100vh;
+  overflow: hidden;
+}
+
+.castList{
+  height: 90vh;
+  overflow: scroll;
+}
