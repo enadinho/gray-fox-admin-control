@@ -27,3 +27,20 @@ p {
   #signUpButton{
       margin-left: 10px;
   }
+
+  .signInButton{
+      width: 95%;
+  }
+
+  .card{
+      width: 100%;
+      height: 90%;
+  }
+
+  .formGroup{
+      width: 70%;
+  }
+
+  .form-control-feedback{
+      color: red;
+  }
