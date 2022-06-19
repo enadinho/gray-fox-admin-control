@@ -17,7 +17,7 @@ export class ConnectorService {
     withCredentials: true
   };
   public static retryTimes = 0;
-  public static timeOut = 120 * 1000;
+  public static timeOut = 3 * 1000;
 
   public static host = 'http://localhost:8080';
 
