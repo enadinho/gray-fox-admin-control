@@ -7,5 +7,8 @@ html, body {
     min-height: 100vh;
     height: auto;
     margin: 0;
+    background-color: #F5F5F5 !important;
   }
   
+
+    body { margin: 0; font-family: "Raleway Thin", sans-serif; }

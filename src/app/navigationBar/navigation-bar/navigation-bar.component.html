@@ -1,25 +1,22 @@
-<html>
 
-<head>
+  <nav class="main-menu " >
+    <div class="d-flex justify-content-center margin-logo" >
+      <img class ="img-logo m-2" src="assets\grayFoxLogo.svg" /></div>
+    
 
-</head>
-
-<body>
-  <div class="area"></div>
-  <nav class="main-menu">
     <ul>
       <li>
-        <a routerLink="home">
-          <i class="fa fa-home fa-2x"></i>
+        <a routerLink="home"  routerLinkActive='active'>
+          <img class ="img-icon" src="assets\home.svg" />
           <span class="nav-text">
             Home
           </span>
         </a>
       </li>
-
+    
       <li>
-        <a routerLink="inActiveCast">
-          <i class="fa fa-users fa-2x"></i>
+        <a routerLink="inActiveCast"  routerLinkActive='active'>
+          <img class ="img-icon" src="assets/FileEarmarkText.svg" />
           <span class="nav-text">
             All Request
           </span>
@@ -27,17 +24,17 @@
 
       </li>
       <li>
-        <a routerLink="cast">
-          <i class="fa fa-envelope fa-2x"></i>
+        <a routerLink="cast"  routerLinkActive='active'>
+          <img  class ="img-icon" src="assets/director-chair 1.svg" />
           <span class="nav-text">
             All Cast
           </span>
         </a>
 
       </li>
-      <li class="has-subnav">
-        <a routerLink="employee">
-          <i class="fa fa-user fa-2x"></i>
+      <li>
+        <a routerLink="employee"  routerLinkActive='active'>
+          <img class ="img-icon" src="assets/users.svg" />
           <span class="nav-text">
             All Empolyee
           </span>
@@ -46,9 +43,10 @@
     </ul>
 
     <ul class="logout">
-      <li>
-        <a routerLink="" (click)="logout()">
-          <i class="fa fa-power-off fa-2x"></i>
+     
+      <li class="m-2">
+        <a  routerLink="" (click)="logout()">
+          <img class ="img-icon" src="assets/log-out.svg" />
           <span class="nav-text">
             Logout
           </span>
