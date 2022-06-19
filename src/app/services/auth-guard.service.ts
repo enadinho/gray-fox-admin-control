@@ -17,8 +17,8 @@ export class AuthGuardService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
 
-
-    return new Promise((resolve, reject) => {
+    this.isUserLoggedIn=this.authService.isLoggedIn();
+    console.log(state.url);
       if (!this.isUserLoggedIn && this.routeURL !== '/login') {
         // assign '/login' in 'routeURL' to
         // avoid get into infinite loop
@@ -32,18 +32,18 @@ export class AuthGuardService implements CanActivate {
           // so when the '/login' page opens,
           // this param tell us from where it comes
           queryParams: {
-            return: 'login'
+            return: state.url
           }
         });
-        return resolve(false);
+        return false;
       } else {
         // re-assign current route URL to 'routeURL'
         // when the user is logged in
         this.routeURL = this.router.url;
         // just return true - if user is logged in
-        return resolve(true);
+        return true;
       }
-  });
+
 }
 
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { switchMap } from 'rxjs';
 import { NotificationService } from '../app-common/notification.service';
 import { AuthService } from '../services/auth/auth-service.service';
 
@@ -27,20 +28,23 @@ export class LoginComponent {
   onSubmit(form: any): void {
     if (this.f.valid) {
 
-      this.authService.login(this.f.value).subscribe(
-        res=> {
-          console.log(res);
-          if(res.token){
-            this.notificationService.showSuccess(res.first_name+" "+res.last_name, "Login Success")
-            this.router.navigate(['/dashboard/home']);
-          }
+      let authFlow=this.authService.login(this.f.value)
+      .pipe(switchMap(() => this.authService.profile()));
+      
+      
+      authFlow.subscribe({
+        next: (user) => {
+          this.authService.saveUserToLocalStorage(user);
+          console.log(user);
+          this.notificationService.showSuccess(user.first_name+" "+user.last_name, "Login Success")
+          this.router.navigate(['/dashboard/home']);
         },
-        err =>{
-          console.log(err);
-          this.notificationService.showError(err.error, "Login Failed")
+        error: (error) => {
+          console.log(error);
+          this.notificationService.showError(error.error, "Login Failed")
           this.f.reset();
         }
-      );
+      });
 
     } else {
 

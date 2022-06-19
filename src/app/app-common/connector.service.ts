@@ -13,7 +13,8 @@ import { catchError, retry, tap, timeout } from 'rxjs/operators';
 })
 export class ConnectorService {
   static httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    withCredentials: true
   };
   public static retryTimes = 0;
   public static timeOut = 120 * 1000;
@@ -46,7 +47,7 @@ export class ConnectorService {
       );
   }
 
-  public get(service: string,data: any,onError: any,errorLabel?: string): Observable<any> {
+  public get(service: string,onError?: any,errorLabel?: string, options?:any): Observable<any> {
     return this.httpClient.get(ConnectorService.host+service, ConnectorService.httpOptions).pipe(
       timeout(ConnectorService.timeOut),
       retry(ConnectorService.retryTimes),

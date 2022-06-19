@@ -18,9 +18,18 @@ const routes: Routes = [
     canActivate: [AuthGuardService], 
     children:[
       {path:'home', component: HomeComponent},
-      {path:'employee', component: EmployeeComponent},
-      {path:'cast', component: CastComponent},
-      {path:'inActiveCast', component: InActiveCastComponent}
+      {
+        path:'employee', component: EmployeeComponent, 
+        canActivate: [AuthGuardService]
+      },
+      {
+        path:'cast', component: CastComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path:'inActiveCast', component: InActiveCastComponent,
+        canActivate: [AuthGuardService]
+      }
     ]
   },
 ];

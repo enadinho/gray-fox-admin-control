@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ConnectorService } from 'src/app/app-common/connector.service';
@@ -8,6 +9,8 @@ import { JwtHelperService } from '../jwt/jwthelper.service';
 })
 export class AuthService {
   public static authAPI = '/api/employee/login';
+  public static profAPI = '/api/employee/profile';
+
 
   constructor(public api: ConnectorService) { }
 
@@ -20,19 +23,24 @@ export class AuthService {
     );
   }
 
+  profile():Observable<any>{
+    return this.api.get(AuthService.profAPI);
+  }
+
+  saveUserToLocalStorage(user:any) {
+    localStorage.setItem('user-profile', JSON.stringify(user));
+  }
+
+  //improve this function later if required
   isLoggedIn(){
-    let jwtHelper = new JwtHelperService(); 
-    let tocken = localStorage.getItem('tocken');
+    let userProfile=localStorage.getItem('user-profile');
+    if(userProfile!=null)
+      return true;
+    else
+      return false;  
+  }
 
-    if(!tocken)
-        return false;
-
-    let expirationDate = jwtHelper.getTokenExpirationDate(tocken);
-    let isExpired = jwtHelper.isTokenExpired(tocken);
-
-    console.log("Expiration", expirationDate);
-    console.log("is Expired", isExpired);
-
-    return !isExpired;
-}
+  logout(){
+    localStorage.removeItem('user-profile')
+  }
 }

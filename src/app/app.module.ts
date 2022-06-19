@@ -35,7 +35,7 @@ import { NotificationService } from './app-common/notification.service';
     HttpClientModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
-      timeOut: 4000,
+      timeOut: 3000,
       positionClass: 'toast-top-right',
       preventDuplicates: true
     })
