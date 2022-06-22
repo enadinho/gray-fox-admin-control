@@ -4,12 +4,30 @@
     color: #D74022;
 }
 
-.container{
-  height:100vh;
-  overflow: hidden;
+.container {
+  height: 95vh;
+  overflow: scroll;
 }
 
-.castList{
-  height: 90vh;
+/* .requestList{
+  height: 40vh;
   overflow: scroll;
+}
+
+.employeeList{
+  height: 45vh;
+  overflow: scroll;
+} */
+
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #FF0000;
 }
