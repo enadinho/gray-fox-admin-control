@@ -35,11 +35,11 @@ export class AuthService {
   //improve this function later if required
   isLoggedIn(){
     let userProfile=localStorage.getItem('user');
-    console.log(userProfile);
+    // console.log(userProfile);
     if(userProfile!=null){
       let userObject=JSON.parse(userProfile);
       let tokenExpired=this.tokenExpired(userObject.token)
-      console.log(tokenExpired)
+      // console.log(tokenExpired)
       return !tokenExpired;
     }
     else
@@ -53,7 +53,7 @@ export class AuthService {
 
   tokenExpired(token: string) {
     const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
-    console.log(expiry)
+    // console.log(expiry)
     return (Math.floor((new Date).getTime() / 1000)) >= expiry;
   }
 

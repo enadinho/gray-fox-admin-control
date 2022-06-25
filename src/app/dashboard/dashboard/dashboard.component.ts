@@ -12,10 +12,11 @@ export class DashboardComponent implements OnInit {
   constructor(private dashBoardService: DashboardService) { }
 
   ngOnInit(): void {
-    this.dashBoardService.getAllInActiveCast().subscribe(res =>{
-      this.inActiveCasts = res;
-      console.log(this.inActiveCasts);
-    });
+    //Uncomment and complete if necessary
+    // this.dashBoardService.getAllInActiveCast().subscribe(res =>{
+    //   this.inActiveCasts = res;
+    //   console.log(this.inActiveCasts);
+    // });
   }
 
 }
