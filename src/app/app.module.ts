@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,14 @@ import { CastCardComponent } from './app-common/cast-card/cast-card.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { NotificationService } from './app-common/notification.service';
+import { AppInitService } from './services/app-init/app-init.service';
+import { AutoLogoutService } from './services/auto-logout/auto-logout.service';
+
+export function initializeApp(appInitService: AppInitService) {
+  return (): Promise<any> => {
+     return appInitService.Init();
+  }
+}
 
 @NgModule({
   declarations: [
@@ -40,7 +48,12 @@ import { NotificationService } from './app-common/notification.service';
       preventDuplicates: true
     })
   ],
-  providers: [NotificationService],
+  providers: [
+    NotificationService,
+    AppInitService,
+    AutoLogoutService,
+    { provide: APP_INITIALIZER,useFactory: initializeApp, deps: [AppInitService], multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
