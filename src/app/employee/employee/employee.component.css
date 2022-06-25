@@ -1,0 +1,37 @@
+.editBtn{
+    height: 60px;
+    width: 60px;
+    left: 1750px;
+    top: 141px;
+    border-radius: 0px;
+    margin-top: 20px;
+    background-image: url(/assets/img/edit.png);
+    border: hidden;
+    background-color: white;
+
+
+}
+.activeBtn{
+    height: 60px;
+    width: 60px;
+    left: 1750px;
+    top: 141px;
+    border-radius: 0px;
+    margin-top: 20px;
+    background-image: url(/assets/img/active.png);
+    border: hidden;
+    background-color: white;
+
+}
+.deleteBtn{
+    height: 60px;
+    width: 60px;
+    left: 1750px;
+    top: 141px;
+    border-radius: 0px;
+    margin-top: 20px;
+    background-image: url(/assets/img/Group2078.png);
+    border: hidden;
+    background-color: white;
+
+}
