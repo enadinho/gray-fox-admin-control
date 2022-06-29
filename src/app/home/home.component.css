@@ -31,3 +31,11 @@ html {
 ::-webkit-scrollbar-thumb {
   background: #FF0000;
 }
+
+.lastName{
+  font-weight: bold; 
+}
+
+.firstName{
+  font-weight: 200;
+}

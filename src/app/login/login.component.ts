@@ -30,12 +30,12 @@ export class LoginComponent {
 
       let authFlow=this.authService.login(this.f.value)
       .pipe(switchMap(() => this.authService.profile()));
-      
-      
+
+
       authFlow.subscribe({
         next: (user) => {
           this.authService.saveUserToLocalStorage(user);
-          console.log(user);
+          // console.log(user);
           this.notificationService.showSuccess(user.first_name+" "+user.last_name, "Login Success")
           this.router.navigate(['/dashboard/home']);
         },

@@ -41,8 +41,8 @@ export class ConnectorService {
         timeout(ConnectorService.timeOut),
         retry(ConnectorService.retryTimes),
         tap(
-          res => console.log(res),
-          error => console.log(error)
+          // res => console.log(res),
+          // error => console.log(error)
         )
       );
   }
@@ -52,8 +52,8 @@ export class ConnectorService {
       timeout(ConnectorService.timeOut),
       retry(ConnectorService.retryTimes),
       tap(
-        res => console.log(res),
-        error => console.log(error)
+        // res => console.log(res),
+        // error => console.log(error)
       )
     );
   }
