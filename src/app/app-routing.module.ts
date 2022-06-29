@@ -22,11 +22,11 @@ const routes: Routes = [
       },
       {
         path:'home', component: HomeComponent,
-        canActivate: [AuthGuardService]
+        // canActivate: [AuthGuardService]
       },
       {
         path:'employee', component: EmployeeComponent,
-        canActivate: [AuthGuardService]
+        // canActivate: [AuthGuardService]
       },
       {
         path:'cast', component: CastComponent,
@@ -34,7 +34,7 @@ const routes: Routes = [
       },
       {
         path:'inActiveCast', component: InActiveCastComponent,
-        canActivate: [AuthGuardService]
+        // canActivate: [AuthGuardService]
       }
     ]
   },

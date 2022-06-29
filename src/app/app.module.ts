@@ -18,6 +18,7 @@ import { NotificationService } from './app-common/notification.service';
 import { AppInitService } from './services/app-init/app-init.service';
 import { AutoLogoutService } from './services/auto-logout/auto-logout.service';
 import { RequestCastCardComponent } from './cast/request-cast-card/request-cast-card.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 export function initializeApp(appInitService: AppInitService) {
   return (): Promise<any> => {
@@ -44,6 +45,7 @@ export function initializeApp(appInitService: AppInitService) {
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',
