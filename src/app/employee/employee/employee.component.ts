@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { profile } from 'console';
 import { EmployeeService } from './employee.service';
 
 @Component({
@@ -25,8 +24,8 @@ export class EmployeeComponent implements OnInit {
         this.employeesList = result
       }
     );
-    //console.log(this.employeesList)
-  }
+    console.log(this.employeesList)
+  } 
 
   /*add() {
     this.employeeProfile.push(new profiles())
