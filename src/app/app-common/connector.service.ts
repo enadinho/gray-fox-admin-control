@@ -47,15 +47,20 @@ export class ConnectorService {
       );
   }
 
-  public get(service: string,onError?: any,errorLabel?: string, options?:any): Observable<any> {
-    return this.httpClient.get(ConnectorService.host+service, ConnectorService.httpOptions).pipe(
-      timeout(ConnectorService.timeOut),
-      retry(ConnectorService.retryTimes),
-      tap(
-        // res => console.log(res),
-        // error => console.log(error)
-      )
-    );
+  public get(service: string,onError?: any,errorLabel?: string, params?:any): Observable<any> {
+    return this.httpClient.get(ConnectorService.host+service,
+      { headers: ConnectorService.httpOptions.headers, 
+        params: params,  
+        withCredentials: ConnectorService.httpOptions.withCredentials 
+      })
+      .pipe(
+        timeout(ConnectorService.timeOut),
+        retry(ConnectorService.retryTimes),
+        tap(
+          // res => console.log(res),
+          // error => console.log(error)
+        )
+      );
   }
 
 

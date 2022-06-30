@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Cast } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-request-cast-card',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./request-cast-card.component.css']
 })
 export class RequestCastCardComponent implements OnInit {
+
+  @Input("cast") cast:Cast;
 
   constructor() { }
 
