@@ -3,23 +3,8 @@
     <div class="col-sm-12 col-md-9">
       <p class="section-title mb-0">Cast</p>
       <div class="row castList">
-        <div class="col-xsm-9 col-sm-6 col-md-4">
-          <app-cast-card></app-cast-card>
-        </div>
-        <div class="col-xsm-9 col-sm-6 col-md-4">
-          <app-cast-card></app-cast-card>
-        </div>
-        <div class="col-xsm-9 col-sm-6 col-md-4">
-          <app-cast-card></app-cast-card>
-        </div>
-        <div class="col-xsm-9 col-sm-6 col-md-4">
-          <app-cast-card></app-cast-card>
-        </div>
-        <div class="col-xsm-9 col-sm-6 col-md-4">
-          <app-cast-card></app-cast-card>
-        </div>
-        <div class="col-xsm-9 col-sm-6 col-md-4">
-          <app-cast-card></app-cast-card>
+        <div *ngFor="let cast of allCasts" class="col-md-4">
+          <app-cast-card [cast]="cast" ></app-cast-card>
         </div>
       </div>
     </div>

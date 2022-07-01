@@ -3,21 +3,11 @@
     <div class="col-sm-12 col-md-12">
       <p class="section-title mb-0">ALL CASTS</p>
       <div class="row castList">
-    <!-- <div class="col" *ngFor="let cast of inActiveCasts">
+        <div *ngFor="let cast of acceptedCasts | paginate: config" class="col-md-3">
+          <app-cast-card [cast]="cast" ></app-cast-card>
+        </div>
 
-    </div> -->
-    <div class="col-md-3">
-      <app-cast-card></app-cast-card>
-    </div>
-    <div class="col-md-3">
-      <app-cast-card></app-cast-card>
-    </div>
-    <div class="col-md-3">
-      <app-cast-card></app-cast-card>
-    </div>
-    <div class="col-md-3">
-      <app-cast-card></app-cast-card>
-    </div>
+        <pagination-controls *ngIf="acceptedCasts.length>0" (pageChange)="pageChanged($event)"></pagination-controls>
   </div>
 </div>
 </div>

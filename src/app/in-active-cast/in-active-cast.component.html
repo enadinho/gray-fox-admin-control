@@ -3,13 +3,11 @@
     <div class="col-sm-12 col-md-12">
       <p class="section-title mb-0">JOIN REQUESTS</p>
       <div class="row castList">
+        <div *ngFor="let cast of pendingCasts | paginate: config" class="col-md-3">
+          <app-request-cast-card [cast]="cast" (castUpdated)="castUpdated()" ></app-request-cast-card>
+        </div>
 
-    <div *ngFor="let cast of pendingCasts | paginate: config" class="col-md-3">
-      <app-request-cast-card [cast]="cast" ></app-request-cast-card>
-    </div>
-
-    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
-
+        <pagination-controls *ngIf="pendingCasts.length>0" (pageChange)="pageChanged($event)"></pagination-controls>
   </div>
 </div>
 </div>
