@@ -1,5 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
+=======
+// import { profile } from 'console';
+>>>>>>> d00621b0a7322cb24dfb0c9e6b2e297bba44b067
 import { EmployeeService } from './employee.service';
 
 @Component({
@@ -36,6 +40,6 @@ export class EmployeeComponent implements OnInit {
 /*export class profiles{
   first_name: string | undefined;
   last_name: string | undefined;
-  email: string | undefined; 
-  active: string | undefined; 
+  email: string | undefined;
+  active: string | undefined;
 }*/

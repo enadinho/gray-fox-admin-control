@@ -28,11 +28,7 @@ export class InActiveCastComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.castService.getAllPending(this.currentPage, this.pageSize).subscribe(res =>{
-      this.pendingCasts = res.casts;
-      this.config.totalItems = res.totalItems;
-      console.log(this.pendingCasts);
-    });
+      this.getAllPendingCastsFromServer();
   }
 
 
@@ -41,7 +37,17 @@ export class InActiveCastComponent implements OnInit {
     this.castService.getAllPending(event-1, this.pageSize).subscribe(res =>{
       this.pendingCasts = res.casts;
       this.config.totalItems = res.totalItems;
-      console.log(this.pendingCasts);
+    });
+  }
+
+  castUpdated(){
+    this.getAllPendingCastsFromServer();
+  }
+
+  getAllPendingCastsFromServer(){
+    this.castService.getAllPending(this.currentPage, this.pageSize).subscribe(res =>{
+      this.pendingCasts = res.casts;
+      this.config.totalItems = res.totalItems;
     });
   }
 

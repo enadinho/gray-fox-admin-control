@@ -7,21 +7,22 @@
 // }
 
 export interface Cast{
-  firstname: String;
-  lastname: String;
-  national: String;
-  mobile: String
-  bodytype: String;
-  city: String;
-  talent: String;
-  height: String;
-  weight: String;
-  workshops: String;
-  gender: String;
-  image: String;
-  experience: String;
-  birthday: String;
-  email: String;
-  status: String;
+  id: number;
+  firstname: string;
+  lastname: string;
+  national: string;
+  mobile: string
+  bodytype: string;
+  city: string;
+  talent: string;
+  height: string;
+  weight: string;
+  workshops: string;
+  gender: string;
+  image: Blob;
+  experience: string;
+  birthday: string;
+  email: string;
+  status: string;
   isActive: Boolean;
 }
