@@ -10,7 +10,7 @@
         </div>
       </div>
   </div>
-  <img id="profileImage{{cast.id}}" class="card-img-top" src="" alt="Card image cap">
+  <img id="profileImage{{cast.id}}" class="card-img-top" src="" onerror="this.src='assets/img/empty.png'" alt="Card image cap">
   <div class="card-body p-2 pt-0" style="display: inline;" >
     <p class="m-1">{{cast ? cast.firstname : ""}}
       <i [ngClass]="cast.gender == 'M' ? 'fa-venus text-primary' : 'fa-mars text-danger'" class="fa ms-1" aria-hidden="true"></i>
@@ -54,7 +54,7 @@
 
   <hr class="m-0"/>
 
-  <div class="card-info p-2 pb-1">
+  <div class="card-info p-2 pb-1" style="height: 90px;">
     <p class="castInfo1 m-0"> Previous Expereince </p>
     <p class="m-0">
       {{cast.experience}}

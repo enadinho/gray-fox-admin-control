@@ -20,9 +20,7 @@ export class RequestCastCardComponent implements OnInit {
   ngOnInit(): void {
 
     this.castService.getCastProfile(this.cast.id).subscribe(res=> {
-      console.log(res)
       if(res){
-        console.log(typeof(res))
         var reader = new FileReader();
         reader.readAsDataURL(res);
         reader.onload = () => {
@@ -30,7 +28,12 @@ export class RequestCastCardComponent implements OnInit {
           image.src = reader.result as string;
         }
       }
-    })
+    },
+    err=> {
+      const image = document.getElementById('profileImage'+this.cast.id) as HTMLImageElement
+      image.src = "assets/img/empty.png";
+    });
+
 
   }
 
