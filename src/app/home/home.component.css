@@ -3,6 +3,35 @@
     font-weight: bold;
     color: #D74022;
 }
+.section-option1{
+  height: 22px;
+  width: 79px;
+  left: 1196px;
+  top: 49px;
+  border-radius: nullpx;
+  color: #D74022;
+  text-decoration: none;
+
+}
+.section-option2{
+  height: 22px;
+  width: 79px;
+  left: 1196px;
+  top: 49px;
+  border-radius: nullpx;
+  color: #D74022;
+  text-decoration: none;
+}
+.section-option1:hover{
+  color: black;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+}
+.section-option2:hover{
+  color: black;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+}
 
 .container {
   height: 100vh;
