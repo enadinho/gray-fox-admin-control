@@ -20,12 +20,27 @@
   margin-bottom: 5px;
  }
 
- .searchKey:hover{
-  background-color: rgb(156, 152, 152);
-  border-radius: 2px;
+ .searchKey{
+  font-weight: 500;
  }
 
- .searchValue:hover{
+ .searchKeyHighlight, .searchKey:hover{
   background-color: rgb(156, 152, 152);
   border-radius: 2px;
+  color: brown;
+ }
+
+ .searchValueHighlight, .searchValue:hover{
+  background-color: rgb(156, 152, 152);
+  border-radius: 2px;
+  color: brown;
+ }
+
+ .cardTitle{
+  font-weight: 700;
+ background-color: white;
+ }
+
+ .applyButton{
+  padding: 0.1rem 0.5rem;
  }

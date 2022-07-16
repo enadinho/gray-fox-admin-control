@@ -1,12 +1,14 @@
 <div class="card" style="border: none;">
-  <div class="card-header pt-1 pb-1">
+  <div class="card-header pt-1 pb-1 cardTitle">
     Filter
   </div>
   <div class="card-body pt-0 pb-0" style="cursor: pointer;">
       <div class="row">
-        <div class="col-md-4 filterKeys">
+        <div class="col-md-4 filterKeys ps-1">
            <p></p>
-           <p (click)="loadSearchValues(key)" *ngFor="let key of searchKeys" class="mb-1 searchKey">{{key}}</p>
+           <p (click)="searchKeySelected(key)" *ngFor="let key of searchKeys"
+           class="mb-1 searchKey" [ngClass]="{'searchKeyHighlight': selectedKey===key}">{{key}}
+          </p>
         </div>
         <div class="col-md-8 filterValues">
           <mat-form-field class="mt-1 mb-2">
@@ -17,7 +19,13 @@
               [dataSource]="searchFieldDataSource"
             ></ngx-mat-search-field>
           </mat-form-field>
-          <p  class="mb-1 searchValue"  *ngFor="let value of searchValues">{{value}}</p>
+          <p  class="mb-1 searchValue"  *ngFor="let value of searchValues"
+            [ngClass]="{'searchValueHighlight': selectedValue===value}"
+            (click)="searchValueSelected(value)">{{value}}</p>
+          <br>
+          <button (click)="applyButtonClick()"
+            type="button" class="btn btn-sm m-2 btn-warning float-end applyButton">Apply
+          </button>
         </div>
       </div>
   </div>

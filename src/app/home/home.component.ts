@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Cast } from '../models/user.model';
 import { CastService } from '../services/cast/cast.service';
 
@@ -10,6 +10,7 @@ import { CastService } from '../services/cast/cast.service';
 export class HomeComponent implements OnInit {
 
   allCasts:Cast[] = [];
+  filters:any[]=[];
   searchKeys=["Name", "Age", "Height", "Weight", "Body Type", "Country"]
   searchValues:string[]=[];
   currentPage=0;
@@ -17,6 +18,8 @@ export class HomeComponent implements OnInit {
   totalItems=0;
 
   config: any;
+
+  @ViewChild('myPopover') myPopover:any;
 
 
 
@@ -33,6 +36,7 @@ export class HomeComponent implements OnInit {
       this.allCasts = res;
       console.log(this.allCasts);
       this.loadSearchValues();
+      this.loadFilters();
     });
   }
 
@@ -77,6 +81,28 @@ export class HomeComponent implements OnInit {
         this.searchValues.push(cast.national)
       })
     }
+  }
+
+  loadFilters(){
+    this.filters.push({
+      key: "Name",
+      value: "Ramsath"
+    });
+
+    this.filters.push({
+      key: "Age",
+      value: "32"
+    })
+  }
+
+  removeFilter(index:any){
+    this.filters.splice(index, 1);
+    this.myPopover.hide();
+  }
+
+  addFilter(event:any){
+    this.filters.push(event)
+    this.myPopover.hide()
   }
 
 }

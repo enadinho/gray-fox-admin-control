@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SearchFieldDataSource, SearchFieldResult } from 'ngx-mat-search-field';
 import { map, Observable, of, startWith } from 'rxjs';
@@ -9,11 +9,16 @@ import { FilterService } from './filter.service';
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.css']
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent implements OnInit, OnChanges {
 
   @Input("searchKeys") searchKeys:string[];
   @Input("searchValues") searchValues:string[];
   @Output("searchKeyClick") searchKeyClick = new EventEmitter();
+  @Output("applyFilter") applyFilter = new EventEmitter();
+
+
+  selectedKey:string;
+  selectedValue: string;
 
   myControl = new FormControl('');
   options: string[] = ['One', 'Two', 'Three'];
@@ -36,15 +41,33 @@ export class FilterComponent implements OnInit {
     );
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
+    if(changes['searchValues']){
+      this.searchValues = this.searchValues.filter((el, i, a) => i === a.indexOf(el))
+    }
+  }
+
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  loadSearchValues(key:string){
+  searchKeySelected(key:string){
     console.log(key);
+    this.selectedKey=key;
     this.searchKeyClick.emit({searchKey: key});
   }
 
+  searchValueSelected(value:string){
+    this.selectedValue=value;
+  }
+
+  applyButtonClick(){
+    this.applyFilter.emit({
+      key: this.selectedKey,
+      value: this.selectedValue
+    })
+  }
 
 }

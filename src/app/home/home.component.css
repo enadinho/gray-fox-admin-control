@@ -12,6 +12,7 @@
 .filterIcon{
   color: #D74022;
   cursor: pointer;
+  font-size: 1.3em;
 }
 
 .section-option2{
@@ -93,4 +94,9 @@ html {
   /* background: #17a2b8 !important; */
   border-radius: 20px !important;
   border: transparent !important;
+}
+
+
+.filterCloseIcon{
+  cursor: pointer;
 }
