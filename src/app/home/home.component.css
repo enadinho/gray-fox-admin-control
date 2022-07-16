@@ -4,21 +4,17 @@
     color: #D74022;
 }
 .section-option1{
-  height: 22px;
-  width: 79px;
-  left: 1196px;
-  top: 49px;
-  border-radius: nullpx;
   color: #D74022;
   text-decoration: none;
 
 }
+
+.filterIcon{
+  color: #D74022;
+  cursor: pointer;
+}
+
 .section-option2{
-  height: 22px;
-  width: 79px;
-  left: 1196px;
-  top: 49px;
-  border-radius: nullpx;
   color: #D74022;
   text-decoration: none;
 }

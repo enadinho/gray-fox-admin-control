@@ -1,0 +1,24 @@
+<div class="card" style="border: none;">
+  <div class="card-header pt-1 pb-1">
+    Filter
+  </div>
+  <div class="card-body pt-0 pb-0" style="cursor: pointer;">
+      <div class="row">
+        <div class="col-md-4 filterKeys">
+           <p></p>
+           <p (click)="loadSearchValues(key)" *ngFor="let key of searchKeys" class="mb-1 searchKey">{{key}}</p>
+        </div>
+        <div class="col-md-8 filterValues">
+          <mat-form-field class="mt-1 mb-2">
+            <ngx-mat-search-field class="serachBar"
+              placeholder="Search"
+              prefetch="true"
+              [maxRows]="20"
+              [dataSource]="searchFieldDataSource"
+            ></ngx-mat-search-field>
+          </mat-form-field>
+          <p  class="mb-1 searchValue"  *ngFor="let value of searchValues">{{value}}</p>
+        </div>
+      </div>
+  </div>
+</div>

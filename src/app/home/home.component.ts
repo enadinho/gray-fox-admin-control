@@ -10,6 +10,8 @@ import { CastService } from '../services/cast/cast.service';
 export class HomeComponent implements OnInit {
 
   allCasts:Cast[] = [];
+  searchKeys=["Name", "Age", "Height", "Weight", "Body Type", "Country"]
+  searchValues:string[]=[];
   currentPage=0;
   pageSize=3;
   totalItems=0;
@@ -30,6 +32,7 @@ export class HomeComponent implements OnInit {
     this.castService.getAll().subscribe(res =>{
       this.allCasts = res;
       console.log(this.allCasts);
+      this.loadSearchValues();
     });
   }
 
@@ -40,6 +43,40 @@ export class HomeComponent implements OnInit {
       this.allCasts = res.casts;
       this.config.totalItems = res.totalItems;
     });
+  }
+
+  loadSearchValues(event?:any){
+    this.searchValues=[];
+    if(event==null || event.searchKey=="Name"){
+      this.allCasts.forEach(cast=> {
+        this.searchValues.push(cast.firstname+" "+cast.lastname)
+      })
+    }
+    else if(event.searchKey=="Age"){
+      this.allCasts.forEach(cast=> {
+        this.searchValues.push(cast.birthday)
+      })
+    }
+    else if(event.searchKey=="Height"){
+      this.allCasts.forEach(cast=> {
+        this.searchValues.push(cast.height)
+      })
+    }
+    else if(event.searchKey=="Weight"){
+      this.allCasts.forEach(cast=> {
+        this.searchValues.push(cast.weight)
+      })
+    }
+    else if(event.searchKey=="Body Type"){
+      this.allCasts.forEach(cast=> {
+        this.searchValues.push(cast.bodytype)
+      })
+    }
+    else if(event.searchKey=="Country"){
+      this.allCasts.forEach(cast=> {
+        this.searchValues.push(cast.national)
+      })
+    }
   }
 
 }

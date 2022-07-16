@@ -1,0 +1,31 @@
+.filterHeader{
+  border: 1px solid black;
+}
+
+
+::ng-deep .popover-body {
+  /* background-color:black;
+  color:white; */
+  min-width: 300px;
+  padding: 0;
+ }
+
+
+ .filterKeys{
+  border-right: 1px solid black;
+ }
+
+ .serachBar{
+  border-bottom: 1px solid;
+  margin-bottom: 5px;
+ }
+
+ .searchKey:hover{
+  background-color: rgb(156, 152, 152);
+  border-radius: 2px;
+ }
+
+ .searchValue:hover{
+  background-color: rgb(156, 152, 152);
+  border-radius: 2px;
+ }

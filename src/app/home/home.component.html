@@ -2,15 +2,23 @@
   <div class="row mt-1 mb-3">
     <div class="col-sm-12 col-md-9">
       <div class="row">
-        <div class="col-9">
+         <div class="col-md-9">
           <p class="section-title mb-0">Cast</p>
         </div>
-        <div class="col-2" style="width: 9.666667%">
-          <a class="section-option1 mb-0">Select All</a>
+        <div class="col-md-3 mt-3">
+          <div [popover]="myPopover"
+          [popoverOnHover]="false"
+          [popoverCloseOnClickOutside]="true"
+          [popoverCloseOnMouseOutside]="false">
+            <i class="fa fa-filter float-end filterIcon mt-1" aria-hidden="true"></i>
+            <a class="section-option2 float-end">Filter</a>
+          </div>
+          <a class="section-option1 float-end me-3">Select All</a>
         </div>
-        <div class="col-1">
-          <a class="section-option2">Filter</a>
-        </div>
+        <!-- <div class="col-md-1 mt-2">
+          <i class="fa fa-filter float-end m-1 filterIcon" aria-hidden="true"></i>
+          <a class="section-option2 float-end">Filter</a>
+        </div> -->
       </div>
       <div class="row castList">
         <div *ngFor="let cast of allCasts" class="col-md-4">
@@ -56,3 +64,14 @@
     </div>
   </div>
 </div>
+
+
+<popover-content #myPopover
+                placement="left"
+                [animation]="true"
+                [closeOnClickOutside]="true">
+    <!-- <b>Very</b> <span style="color: #C21F39">Dynamic</span> <span style="color: #00b3ee">Reusable</span>
+    <b><i><span style="color: #ffc520">Popover With</span></i></b> <small>Html support</small>. -->
+    <app-filter [searchKeys]="searchKeys" [searchValues]="searchValues" (searchKeyClick)="loadSearchValues($event)">
+    </app-filter>
+</popover-content>

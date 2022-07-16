@@ -19,6 +19,12 @@ import { AppInitService } from './services/app-init/app-init.service';
 import { AutoLogoutService } from './services/auto-logout/auto-logout.service';
 import { RequestCastCardComponent } from './cast/request-cast-card/request-cast-card.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { PopoverModule } from 'ngx-smart-popover';
+import { FilterComponent } from './app-common/filter/filter.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule }  from '@angular/material/input'
+import { SearchFieldModule } from 'ngx-mat-search-field';
 
 export function initializeApp(appInitService: AppInitService) {
   return (): Promise<any> => {
@@ -37,7 +43,8 @@ export function initializeApp(appInitService: AppInitService) {
     InActiveCastComponent,
     HomeComponent,
     CastCardComponent,
-    RequestCastCardComponent
+    RequestCastCardComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +57,12 @@ export function initializeApp(appInitService: AppInitService) {
       timeOut: 3000,
       positionClass: 'toast-top-right',
       preventDuplicates: true
-    })
+    }),
+    PopoverModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    SearchFieldModule
   ],
   providers: [
     NotificationService,
