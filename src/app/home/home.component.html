@@ -11,19 +11,7 @@
           <a class="section-option1 ms-3">Select All</a>
         </div>
         <div class="col-md-10">
-          <div [popover]="myPopover"
-          [popoverOnHover]="false"
-          [popoverCloseOnClickOutside]="true"
-          [popoverCloseOnMouseOutside]="false">
-            <i class="fa fa-filter float-end filterIcon mt-1" aria-hidden="true"></i>
-            <span *ngFor="let filter of filters; let i=index;"
-               class="badge rounded-pill bg-warning text-dark float-end mt-2 ms-2">
-               <span>{{filter.key}}:{{filter.value}}</span>
-               <a><i class="fa fa-times-circle-o ms-2 filterCloseIcon" aria-hidden="true"
-                (click)="removeFilter(i); $event.stopPropagation();"></i></a>
-            </span>
-            <!-- <a class="section-option2 float-end">Filter</a> -->
-          </div>
+          <app-filter-nav-bar [data]="allCasts" (filterApplied)="reloadCastsWithFilter($event)"></app-filter-nav-bar>
         </div>
       </div>
       <div class="row castList">
@@ -70,15 +58,3 @@
     </div>
   </div>
 </div>
-
-
-<popover-content #myPopover
-                placement="right"
-                [animation]="true"
-                [closeOnClickOutside]="true">
-    <!-- <b>Very</b> <span style="color: #C21F39">Dynamic</span> <span style="color: #00b3ee">Reusable</span>
-    <b><i><span style="color: #ffc520">Popover With</span></i></b> <small>Html support</small>. -->
-    <app-filter [searchKeys]="searchKeys" [searchValues]="searchValues"
-     (searchKeyClick)="loadSearchValues($event)" (applyFilter)="addFilter($event)">
-    </app-filter>
-</popover-content>

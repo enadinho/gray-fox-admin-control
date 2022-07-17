@@ -54,7 +54,6 @@ export class FilterComponent implements OnInit, OnChanges {
   }
 
   searchKeySelected(key:string){
-    console.log(key);
     this.selectedKey=key;
     this.searchKeyClick.emit({searchKey: key});
   }

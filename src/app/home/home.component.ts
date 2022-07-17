@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { UtilsService } from '../app-common/utils';
 import { Cast } from '../models/user.model';
 import { CastService } from '../services/cast/cast.service';
 
@@ -9,17 +10,12 @@ import { CastService } from '../services/cast/cast.service';
 })
 export class HomeComponent implements OnInit {
 
-  allCasts:Cast[] = [];
-  filters:any[]=[];
-  searchKeys=["Name", "Age", "Height", "Weight", "Body Type", "Country"]
-  searchValues:string[]=[];
+  allCasts:Cast[]=[];
   currentPage=0;
   pageSize=3;
   totalItems=0;
 
   config: any;
-
-  @ViewChild('myPopover') myPopover:any;
 
 
 
@@ -33,10 +29,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.castService.getAll().subscribe(res =>{
-      this.allCasts = res;
+      this.allCasts = res.casts;
       console.log(this.allCasts);
-      this.loadSearchValues();
-      this.loadFilters();
     });
   }
 
@@ -49,60 +43,14 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  loadSearchValues(event?:any){
-    this.searchValues=[];
-    if(event==null || event.searchKey=="Name"){
-      this.allCasts.forEach(cast=> {
-        this.searchValues.push(cast.firstname+" "+cast.lastname)
-      })
-    }
-    else if(event.searchKey=="Age"){
-      this.allCasts.forEach(cast=> {
-        this.searchValues.push(cast.birthday)
-      })
-    }
-    else if(event.searchKey=="Height"){
-      this.allCasts.forEach(cast=> {
-        this.searchValues.push(cast.height)
-      })
-    }
-    else if(event.searchKey=="Weight"){
-      this.allCasts.forEach(cast=> {
-        this.searchValues.push(cast.weight)
-      })
-    }
-    else if(event.searchKey=="Body Type"){
-      this.allCasts.forEach(cast=> {
-        this.searchValues.push(cast.bodytype)
-      })
-    }
-    else if(event.searchKey=="Country"){
-      this.allCasts.forEach(cast=> {
-        this.searchValues.push(cast.national)
-      })
-    }
-  }
-
-  loadFilters(){
-    this.filters.push({
-      key: "Name",
-      value: "Ramsath"
-    });
-
-    this.filters.push({
-      key: "Age",
-      value: "32"
+  reloadCastsWithFilter(event:any){
+    console.log("Reload casts")
+    let filters:any[]=event;
+    filters.forEach(filter => {
+      filter.key=filter.key.toLowerCase().replace(" ", "");
+    })
+    this.castService.getAllWithFiltersApplied(filters).subscribe(res => {
+      this.allCasts=res.casts;
     })
   }
-
-  removeFilter(index:any){
-    this.filters.splice(index, 1);
-    this.myPopover.hide();
-  }
-
-  addFilter(event:any){
-    this.filters.push(event)
-    this.myPopover.hide()
-  }
-
 }

@@ -1,0 +1,30 @@
+.section-option1{
+  color: #D74022;
+  text-decoration: none;
+
+}
+
+.filterIcon{
+  color: #D74022;
+  cursor: pointer;
+  font-size: 1.3em;
+}
+
+.section-option2{
+  color: #D74022;
+  text-decoration: none;
+}
+.section-option1:hover{
+  color: black;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+}
+.section-option2:hover{
+  color: black;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+}
+
+.filterCloseIcon{
+  cursor: pointer;
+}

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Cast } from 'src/app/models/user.model';
 import { CastService } from 'src/app/services/cast/cast.service';
+import { UtilsService } from '../utils';
 
 @Component({
   selector: 'app-cast-card',
@@ -33,12 +34,7 @@ export class CastCardComponent implements OnInit {
   }
 
   calculateAgeFromBD(birthdate:string){
-    if (birthdate) {
-      var timeDiff = Math.abs(Date.now() - new Date(birthdate).getTime());
-      return Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
-    }
-    else
-      return "NA"
+   return UtilsService.calculateAgeFromBirthDate(birthdate);
   }
 
 }

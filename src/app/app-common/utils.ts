@@ -12,5 +12,13 @@ export class UtilsService {
     else return null;
   }
 
+  public static calculateAgeFromBirthDate(birthdate:string){
+    if (birthdate) {
+      var timeDiff = Math.abs(Date.now() - new Date(birthdate).getTime());
+      return Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25).toString();
+    }
+    else
+      return "NA"
+  }
 
 }

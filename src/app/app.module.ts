@@ -25,6 +25,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule }  from '@angular/material/input'
 import { SearchFieldModule } from 'ngx-mat-search-field';
+import { FilterNavBarComponent } from './app-common/filter-nav-bar/filter-nav-bar.component';
 
 export function initializeApp(appInitService: AppInitService) {
   return (): Promise<any> => {
@@ -44,7 +45,8 @@ export function initializeApp(appInitService: AppInitService) {
     HomeComponent,
     CastCardComponent,
     RequestCastCardComponent,
-    FilterComponent
+    FilterComponent,
+    FilterNavBarComponent
   ],
   imports: [
     BrowserModule,

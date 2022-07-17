@@ -15,6 +15,10 @@ export class CastService {
               private router:Router) {
   }
 
+  getAllWithFiltersApplied(data?:any[], page?:number, size?:number){
+    return this.api.post(this.castAPI+"/allCasts", data, null, "", this.getPagingQueryParams(page,size) )
+  }
+
   getAll(page?:number, size?:number):Observable<any>{
     return this.api.get(this.castAPI+"/allCasts", null, "", this.getPagingQueryParams(page,size));
   }

@@ -25,17 +25,43 @@ export class ConnectorService {
     public httpClient: HttpClient,
   ) { }
 
+  // public post(
+  //   service: string,
+  //   data: any,
+  //   onError: any,
+  //   errorLabel?: string
+  // ): Observable<any> {
+  //   return this.httpClient
+  //     .post<any>(
+  //       ConnectorService.host + service,
+  //       data,
+  //       ConnectorService.httpOptions
+  //     )
+  //     .pipe(
+  //       timeout(ConnectorService.timeOut),
+  //       retry(ConnectorService.retryTimes),
+  //       tap(
+  //         // res => console.log(res),
+  //         // error => console.log(error)
+  //       )
+  //     );
+  // }
+
   public post(
     service: string,
     data: any,
     onError: any,
-    errorLabel?: string
+    errorLabel?: string,
+    params?:any
   ): Observable<any> {
     return this.httpClient
       .post<any>(
         ConnectorService.host + service,
         data,
-        ConnectorService.httpOptions
+        { headers: ConnectorService.httpOptions.headers,
+          params: params,
+          withCredentials: ConnectorService.httpOptions.withCredentials
+        }
       )
       .pipe(
         timeout(ConnectorService.timeOut),
