@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Cast } from 'src/app/models/user.model';
+import { FilterService } from '../filter/filter.service';
 import { UtilsService } from '../utils';
 
 @Component({
@@ -13,68 +14,36 @@ export class FilterNavBarComponent implements OnInit {
   @Output('filterApplied') filterApplied = new EventEmitter();
 
   filters:any[]=[];
-  searchKeys=["First Name","Last Name" ,"Age", "Height", "Weight", "Body Type", "Country", "Status"]
+  searchKeys:string[]=["First Name","Last Name" ,"Age", "Height", "Weight", "Body Type", "Country", "Status"];
   searchValues:string[]=[];
-
   @ViewChild('myPopover') myPopover:any;
 
-  constructor() { }
+  selectedKey:string;
+
+  constructor( private filterService:FilterService) { }
 
   ngOnInit(): void {
-    this.loadSearchValues();
     this.loadFilters();
+    this.loadSearchValues();
+    this.filterService.casts.subscribe((data:any) => {
+      this.allCasts=data;
+      this.loadSearchValues(this.selectedKey);
+    })
   }
 
 
-  loadSearchValues(event?:any){
-    this.searchValues=[];
-    if(event==null || event.searchKey=="First Name"){
-      this.allCasts.forEach(cast=> {
-        this.searchValues.push(cast.firstname)
-      })
-    }
-    if(event==null || event.searchKey=="Last Name"){
-      this.allCasts.forEach(cast=> {
-        this.searchValues.push(cast.lastname)
-      })
-    }
-    else if(event.searchKey=="Age"){
-      this.allCasts.forEach(cast=> {
-        this.searchValues.push(UtilsService.calculateAgeFromBirthDate(cast.birthday))
-      })
-    }
-    else if(event.searchKey=="Height"){
-      this.allCasts.forEach(cast=> {
-        this.searchValues.push(cast.height)
-      })
-    }
-    else if(event.searchKey=="Weight"){
-      this.allCasts.forEach(cast=> {
-        this.searchValues.push(cast.weight)
-      })
-    }
-    else if(event.searchKey=="Body Type"){
-      this.allCasts.forEach(cast=> {
-        this.searchValues.push(cast.bodytype)
-      })
-    }
-    else if(event.searchKey=="Country"){
-      this.allCasts.forEach(cast=> {
-        this.searchValues.push(cast.national)
-      })
-    }
-  }
 
   loadFilters(){
-    this.filters.push({
-      key: "Name",
-      value: "Ramsath"
-    });
+  //   this.filters.push({
+  //     key: "Name",
+  //     value: "Ramsath"
+  //   });
 
-    this.filters.push({
-      key: "Age",
-      value: "32"
-    })
+  //   this.filters.push({
+  //     key: "Age",
+  //     value: "32"
+  //   })
+  //load from backend?
   }
 
   removeFilter(index:any){
@@ -86,6 +55,71 @@ export class FilterNavBarComponent implements OnInit {
     this.filters.push(event)
     this.myPopover.hide()
     this.filterApplied.emit(this.filters);
+  }
+
+  searchKeySelected(selectedKey:string){
+      this.selectedKey=selectedKey;
+      this.loadSearchValues(selectedKey);
+      let mappedKey:any=this.getMappedSearcKeyFromSearchName(selectedKey);
+      this.filterService.selectedKey=mappedKey;
+  }
+
+  loadSearchValues(searchKey?:string, searchValue?:string){
+
+    this.searchValues=[];
+
+    if(!searchKey || searchKey=="First Name"){
+      this.allCasts.forEach(cast=> {
+        this.searchValues.push(cast.firstname)
+      })
+    }
+    else if(searchKey=="Last Name"){
+      this.allCasts.forEach(cast=> {
+        this.searchValues.push(cast.lastname)
+      })
+    }
+    else if(searchKey=="Age"){
+      this.allCasts.forEach(cast=> {
+        this.searchValues.push(UtilsService.calculateAgeFromBirthDate(cast.birthday))
+      })
+    }
+    else if(searchKey=="Height"){
+      this.allCasts.forEach(cast=> {
+        this.searchValues.push(cast.height)
+      })
+    }
+    else if(searchKey=="Weight"){
+      this.allCasts.forEach(cast=> {
+        this.searchValues.push(cast.weight)
+      })
+    }
+    else if(searchKey=="Body Type"){
+      this.allCasts.forEach(cast=> {
+        this.searchValues.push(cast.bodytype)
+      })
+    }
+    else if(searchKey=="Country"){
+      this.allCasts.forEach(cast=> {
+        this.searchValues.push(cast.national)
+      })
+    }
+    else if(searchKey=="Status"){
+      this.allCasts.forEach(cast=> {
+        this.searchValues.push(cast.status)
+      })
+    }
+    this.searchValues=this.removeDuplicates(this.searchValues);
+  }
+
+  removeDuplicates(array:any[]): any[]{
+      return [...new Set(array)]
+  }
+
+  getMappedSearcKeyFromSearchName(searchKey?:string) {
+    if(searchKey==undefined) return;
+    if(searchKey=="Age") return "birthday";
+    if(searchKey=="Country") return "national";
+    return searchKey.toLowerCase().replace(" ", "")
   }
 
 }

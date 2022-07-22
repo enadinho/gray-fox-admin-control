@@ -18,7 +18,6 @@
                 [closeOnClickOutside]="true">
     <!-- <b>Very</b> <span style="color: #C21F39">Dynamic</span> <span style="color: #00b3ee">Reusable</span>
     <b><i><span style="color: #ffc520">Popover With</span></i></b> <small>Html support</small>. -->
-    <app-filter [searchKeys]="searchKeys" [searchValues]="searchValues"
-     (searchKeyClick)="loadSearchValues($event)" (applyFilter)="addFilter($event)">
-    </app-filter>
+    <app-filter [searchkeys]="searchKeys" [searchValues]="searchValues"
+    (searchKeyClick)="searchKeySelected($event)" (applyFilter)="addFilter($event)"></app-filter>
 </popover-content>

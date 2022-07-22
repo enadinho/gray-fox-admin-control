@@ -14,19 +14,19 @@ const routes: Routes = [
   },
   {path:'login', component: LoginComponent},
   {path:'dashboard', component: DashboardComponent,
-    // canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
     children:[
       {
         path:'', component: HomeComponent,
-        // canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService]
       },
       {
         path:'home', component: HomeComponent,
-        // canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService]
       },
       {
         path:'employee', component: EmployeeComponent,
-        // canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService]
       },
       {
         path:'cast', component: CastComponent,
@@ -34,7 +34,7 @@ const routes: Routes = [
       },
       {
         path:'inActiveCast', component: InActiveCastComponent,
-        // canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService]
       }
     ]
   },

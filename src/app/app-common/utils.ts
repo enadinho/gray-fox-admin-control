@@ -21,4 +21,11 @@ export class UtilsService {
       return "NA"
   }
 
+  public static calculateBirthDateRangeFromAge(age:string){
+      let today= new Date();
+      let birthYear=today.getFullYear()-Number(age);
+      console.log(birthYear)
+      return birthYear.toString();
+  }
+
 }
